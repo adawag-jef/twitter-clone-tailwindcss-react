@@ -200,7 +200,10 @@ function App() {
             </div>
             <button
               type="submit"
-              className="absolute bottom-0 right-0 h-10 px-4 text-white font-semibold bg-blue hover:bg-darkblue rounded-full focus:outline-none"
+              disabled={!tweet.content.length}
+              className={`${
+                !tweet.content.length ? "opacity-50 cursor-not-allowed" : ""
+              } absolute bottom-0 right-0 h-10 px-4 text-white font-semibold bg-blue hover:bg-darkblue rounded-full focus:outline-none`}
             >
               Tweet
             </button>
@@ -301,7 +304,7 @@ function App() {
           {trending.map((trend) => (
             <button
               key={trend.top}
-              className="w-full flex justify-between hover:bg-lighter p-3 border-t border-lighter"
+              className="w-full flex justify-between hover:bg-lighter p-3 border-t border-lighter focus:outline-none"
             >
               <div>
                 <p className="text-sm text-left leading-tight text-dark">
@@ -317,7 +320,7 @@ function App() {
               <i className="fas fa-angle-down text-lg text-dark"></i>
             </button>
           ))}
-          <button className="w-full p-3 hover:bg-lighter text-left text-blue border-t border-lighter">
+          <button className="w-full p-3 hover:bg-lighter text-left text-blue border-t border-lighter focus:outline-none">
             Show more
           </button>
         </div>
@@ -329,7 +332,7 @@ function App() {
           {friends.map((friend) => (
             <button
               key={friend.handle}
-              className="w-full flex hover:bg-lighter p-3 border-t border-lighter"
+              className="w-full flex hover:bg-lighter p-3 border-t border-lighter focus:outline-none"
             >
               <img
                 src={`./images/${friend.src}`}
@@ -350,7 +353,7 @@ function App() {
               </a>
             </button>
           ))}
-          <button className="w-full p-3 hover:bg-lighter text-left text-blue border-t border-lighter">
+          <button className="w-full p-3 hover:bg-lighter text-left text-blue border-t border-lighter focus:outline-none">
             Show more
           </button>
         </div>
