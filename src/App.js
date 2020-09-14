@@ -106,7 +106,7 @@ function App() {
                 onClick={() => setId(tab.id)}
                 className={`${
                   id === tab.id ? "text-blue" : ""
-                } flex items-center py-2 px-4 mb-3 focus:outline-none hover:bg-lightblue hover:text-blue rounded-full mr-auto`}
+                } flex items-center py-2 px-4 mb-3 focus:outline-none hover:bg-lightblue hover:text-blue  transition-all ease-out duration-700 rounded-full mr-auto`}
               >
                 <i className={`${tab.icon} text-2xl mr-4 text-left`}></i>
                 <p className="hidden lg:block text-lg font-semibold">
@@ -123,7 +123,7 @@ function App() {
         <div className="lg:w-full relative">
           <button
             onClick={() => setDropdown(true)}
-            className="flex items-center w-full hover:bg-lightblue rounded-full p-2 focus:outline-none"
+            className="flex items-center w-full hover:bg-lightblue transition-all ease-out duration-700 rounded-full p-2 focus:outline-none"
           >
             <img
               src="./images/profile.png"
@@ -140,7 +140,7 @@ function App() {
             <div className="absolute left-0 bottom-0 w-64 rounded-lg shadow-md border-lightest bg-white mb-16">
               <button
                 onClick={() => setDropdown(false)}
-                className="flex items-center w-full hover:bg-lightest p-3 focus:outline-none"
+                className="flex items-center w-full hover:bg-lightest transition-all ease-out duration-700 p-3 focus:outline-none"
               >
                 <img
                   src="./images/profile.png"
@@ -211,7 +211,7 @@ function App() {
         </div>
         {tweets.map((tweet) => (
           <div className="flex flex-col-reverse">
-            <div className="w-full p-4 border-b hover:bg-lighter flex">
+            <div className="w-full p-4 border-b hover:bg-lighter transition-all ease-out duration-700 flex">
               <div className="flex-none mr-4">
                 <img
                   src="./images/profile.png"
@@ -250,7 +250,7 @@ function App() {
         ))}
 
         {following.map((follow) => (
-          <div className="w-full p-4 border-b hover:bg-lighter flex">
+          <div className="w-full p-4 border-b hover:bg-lighter transition-all ease-out duration-700 flex">
             <div className="flex-none mr-4">
               <img
                 src={`./images/${follow.src}`}
@@ -292,7 +292,7 @@ function App() {
       <div className="hidden md:block w-1/3 h-full border-l border-lighter py-2 px-6 overflow-y-scroll relative">
         <input
           type="text"
-          className="pl-12 rounded-full w-full p-2 bg-lighter text-sm focus:outline-none"
+          className="pl-12 rounded-full w-full p-2 bg-lighter text-sm focus:shadow-outline focus:outline-none transition-all ease-out duration-700 "
           placeholder="Search Twitter"
         />
         <i className="fas fa-search absolute left-0 top-0 mt-5 ml-12 text-sm text-light"></i>
@@ -304,7 +304,7 @@ function App() {
           {trending.map((trend) => (
             <button
               key={trend.top}
-              className="w-full flex justify-between hover:bg-lighter p-3 border-t border-lighter focus:outline-none"
+              className="w-full flex justify-between hover:bg-lighter transition-all ease-out duration-700 p-3 border-t border-lighter focus:outline-none"
             >
               <div>
                 <p className="text-sm text-left leading-tight text-dark">
@@ -320,7 +320,7 @@ function App() {
               <i className="fas fa-angle-down text-lg text-dark"></i>
             </button>
           ))}
-          <button className="w-full p-3 hover:bg-lighter text-left text-blue border-t border-lighter focus:outline-none">
+          <button className="w-full p-3 hover:bg-lighter transition-all ease-out duration-700 text-left text-blue border-t border-lighter focus:outline-none">
             Show more
           </button>
         </div>
@@ -332,7 +332,7 @@ function App() {
           {friends.map((friend) => (
             <button
               key={friend.handle}
-              className="w-full flex hover:bg-lighter p-3 border-t border-lighter focus:outline-none"
+              className="w-full flex hover:bg-lighter transition-all ease-out duration-700 p-3 border-t border-lighter focus:outline-none"
             >
               <img
                 src={`./images/${friend.src}`}
@@ -353,7 +353,7 @@ function App() {
               </a>
             </button>
           ))}
-          <button className="w-full p-3 hover:bg-lighter text-left text-blue border-t border-lighter focus:outline-none">
+          <button className="w-full p-3 hover:bg-lighter transition-all ease-out duration-700 text-left text-blue border-t border-lighter focus:outline-none">
             Show more
           </button>
         </div>
