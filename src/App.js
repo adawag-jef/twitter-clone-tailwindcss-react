@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import profileImg from "./images/profile.png";
+// import profileImg from "./images/profile.png";
+
 import "./styles/main.css";
 
 function App() {
@@ -22,11 +23,17 @@ function App() {
     { top: "Trending", title: "When Beyonce", bottom: "25.4k tweets" },
   ];
 
+  const friends = [
+    { src: "elon.jpg", name: "Elon Musk", handle: "@teslaBoy" },
+    { src: "monk.jpg", name: "Adrian Monk", handle: "@detective:)" },
+    { src: "kevin.jpg", name: "Kevin Hart", handle: "@miniRock" },
+  ];
+
   const [id, setId] = useState("home");
   const [dropdown, setDropdown] = useState(false);
 
   return (
-    <div className="flex container h-screen w-full">
+    <div className="flex h-screen w-full">
       {/* side nav */}
       <div className="lg:w-1/5 border-r border-light lg:px-6 px-2 py-2 flex flex-col justify-between">
         <div>
@@ -60,8 +67,8 @@ function App() {
             className="flex items-center w-full hover:bg-lightblue rounded-full p-2 focus:outline-none"
           >
             <img
-              src={profileImg}
-              alt="profile image"
+              src="./images/profile.png"
+              alt="profile of user"
               className="w-10 h-10 rounded-full border-lighter"
             />
             <div className="hidden lg:block ml-4">
@@ -77,8 +84,8 @@ function App() {
                 className="flex items-center w-full hover:bg-lightest p-3 focus:outline-none"
               >
                 <img
-                  src={profileImg}
-                  alt="profile image"
+                  src="./images/profile.png"
+                  alt="profile pic"
                   className="w-10 h-10 rounded-full border-lighter"
                 />
                 <div className="ml-4">
@@ -105,23 +112,26 @@ function App() {
       </div>
 
       {/* tweets */}
-      <div className="w-1/2 h-full "></div>
+      <div className="w-1/2 h-full overflow-y-scroll"></div>
 
       {/* trending */}
-      <div className="w-1/3 h-full border-l border-lighter py-2 px-6 overflow-y-scroll relative">
+      <div className="hidden md:block w-1/3 h-full border-l border-lighter py-2 px-6 overflow-y-scroll relative">
         <input
           type="text"
           className="pl-12 rounded-full w-full p-2 bg-lighter text-sm focus:outline-none"
           placeholder="Search Twitter"
         />
         <i className="fas fa-search absolute left-0 top-0 mt-5 ml-12 text-sm text-light"></i>
-        <div className="w-full rounded-lg bg-lightest ">
+        <div className="w-full rounded-lg bg-lightest mt-4">
           <div className="flex items-center justify-between p-3">
             <p className="text-lg font-bold">Trends for You</p>
             <i className="fas fa-cog text-lg text-blue"></i>
           </div>
           {trending.map((trend) => (
-            <button className="w-full flex justify-between hover:bg-lighter p-3 border-t border-lighter">
+            <button
+              key={trend.top}
+              className="w-full flex justify-between hover:bg-lighter p-3 border-t border-lighter"
+            >
               <div>
                 <p className="text-sm text-left leading-tight text-dark">
                   {trend.top}
@@ -134,6 +144,39 @@ function App() {
                 </p>
               </div>
               <i className="fas fa-angle-down text-lg text-dark"></i>
+            </button>
+          ))}
+          <button className="w-full p-3 hover:bg-lighter text-left text-blue border-t border-lighter">
+            Show more
+          </button>
+        </div>
+
+        <div className="w-full rounded-lg bg-lightest my-4 ">
+          <div className="p-3">
+            <p className="text-lg font-bold">Who to follow</p>
+          </div>
+          {friends.map((friend) => (
+            <button
+              key={friend.handle}
+              className="w-full flex hover:bg-lighter p-3 border-t border-lighter"
+            >
+              <img
+                src={`./images/${friend.src}`}
+                alt="friend pic"
+                className="w-12 h-12 rounded-full border-lighter"
+              />
+              <div className="ml-4">
+                <p className="text-sm font-bold leading-tight">
+                  {friends.name}
+                </p>
+                <p className="text-sm leading-tight">{friend.handle}</p>
+              </div>
+              <a
+                href="/"
+                className="ml-auto text-sm text-blue py-2 px-4 rounded-full border-2 border-blue"
+              >
+                Follow
+              </a>
             </button>
           ))}
           <button className="w-full p-3 hover:bg-lighter text-left text-blue border-t border-lighter">
