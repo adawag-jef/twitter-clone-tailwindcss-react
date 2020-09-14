@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import profileImg from "./images/profile.png";
 
 import "./styles/main.css";
 
@@ -16,7 +15,7 @@ function App() {
   ];
 
   const trending = [
-    { top: "Trending in TX", title: "Gigi", bottom: "Trending with: Rip Gigi" },
+    { top: "Trending in TX", title: "Gigi", bottom: "Trending with: Gigi" },
     { top: "Music", title: "We Won", bottom: "135K Tweets" },
     { top: "Pop", title: "Blue Ivy", bottom: "40k tweets" },
     { top: "Trending in US", title: "Denim Day", bottom: "40k tweets" },
@@ -24,15 +23,27 @@ function App() {
   ];
 
   const friends = [
-    { src: "elon.jpg", name: "Elon Musk", handle: "@teslaBoy" },
-    { src: "monk.jpg", name: "Adrian Monk", handle: "@detective:)" },
-    { src: "kevin.jpg", name: "Kevin Hart", handle: "@miniRock" },
+    {
+      src: "https://randomuser.me/api/portraits/women/37.jpg",
+      name: "Woman 1",
+      handle: "@teslaBoy",
+    },
+    {
+      src: "https://randomuser.me/api/portraits/men/37.jpg",
+      name: "Man 1",
+      handle: "@detective:)",
+    },
+    {
+      src: "https://randomuser.me/api/portraits/men/20.jpg",
+      name: "Man 2",
+      handle: "@miniRock",
+    },
   ];
 
   const following = [
     {
-      src: "elon.jpg",
-      name: "Elon Musk",
+      src: "https://randomuser.me/api/portraits/men/37.jpg",
+      name: "User 1",
       handle: "@teslaBoy",
       time: "20 min",
       tweet: "Should I just quarantine on mars??",
@@ -41,8 +52,8 @@ function App() {
       like: "1,000,003",
     },
     {
-      src: "kevin.jpg",
-      name: "Kevin Hart",
+      src: "https://randomuser.me/api/portraits/men/40.jpg",
+      name: "Another User",
       handle: "@miniRock",
       time: "55 min",
       tweet: "Should me and the rock do another sub-par movie together????",
@@ -51,8 +62,8 @@ function App() {
       like: "20,003",
     },
     {
-      src: "elon.jpg",
-      name: "Elon Musk",
+      src: "https://randomuser.me/api/portraits/women/20.jpg",
+      name: "User",
       handle: "@teslaBoy",
       time: "1.4 hr",
       tweet: "Haha just made a flame thrower. Shld I sell them?",
@@ -61,8 +72,8 @@ function App() {
       like: "5,000,003",
     },
     {
-      src: "elon.jpg",
-      name: "Elon Musk",
+      src: "https://randomuser.me/api/portraits/women/20.jpg",
+      name: "User 1",
       handle: "@teslaBoy",
       time: "1.4 hr",
       tweet: "Just did something crazyyyyyyy",
@@ -126,7 +137,7 @@ function App() {
             className="flex items-center w-full hover:bg-lightblue transition-all ease-out duration-700 rounded-full p-2 focus:outline-none"
           >
             <img
-              src="./images/profile.png"
+              src="https://randomuser.me/api/portraits/women/7.jpg"
               alt="profile of user"
               className="w-10 h-10 rounded-full border-lighter"
             />
@@ -143,7 +154,7 @@ function App() {
                 className="flex items-center w-full hover:bg-lightest transition-all ease-out duration-700 p-3 focus:outline-none"
               >
                 <img
-                  src="./images/profile.png"
+                  src="https://randomuser.me/api/portraits/women/7.jpg"
                   alt="profile pic"
                   className="w-10 h-10 rounded-full border-lighter"
                 />
@@ -179,7 +190,7 @@ function App() {
         <div className="px-5 py-3 border-b-8 border-lighter flex">
           <div className="flex-none mr-4">
             <img
-              src="./images/profile.png"
+              src="https://randomuser.me/api/portraits/women/7.jpg"
               alt="profile pic"
               className="h-12 w-12 rounded-full flex-none"
             />
@@ -214,7 +225,7 @@ function App() {
             <div className="w-full p-4 border-b hover:bg-lighter transition-all ease-out duration-700 flex">
               <div className="flex-none mr-4">
                 <img
-                  src="./images/profile.png"
+                  src="https://randomuser.me/api/portraits/women/7.jpg"
                   alt="profile pic"
                   className="h-12 w-12 rounded-full flex-none"
                 />
@@ -253,7 +264,7 @@ function App() {
           <div className="w-full p-4 border-b hover:bg-lighter transition-all ease-out duration-700 flex">
             <div className="flex-none mr-4">
               <img
-                src={`./images/${follow.src}`}
+                src={follow.src}
                 alt="profile pic"
                 className="w-12 h-12 rounded-full flex-none"
               />
@@ -335,7 +346,7 @@ function App() {
               className="w-full flex hover:bg-lighter transition-all ease-out duration-700 p-3 border-t border-lighter focus:outline-none"
             >
               <img
-                src={`./images/${friend.src}`}
+                src={friend.src}
                 alt="friend pic"
                 className="w-12 h-12 rounded-full border-lighter"
               />
