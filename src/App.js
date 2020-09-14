@@ -14,6 +14,14 @@ function App() {
     { icon: "fas fa-ellipsis-h", title: "More", id: "more" },
   ];
 
+  const trending = [
+    { top: "Trending in TX", title: "Gigi", bottom: "Trending with: Rip Gigi" },
+    { top: "Music", title: "We Won", bottom: "135K Tweets" },
+    { top: "Pop", title: "Blue Ivy", bottom: "40k tweets" },
+    { top: "Trending in US", title: "Denim Day", bottom: "40k tweets" },
+    { top: "Trending", title: "When Beyonce", bottom: "25.4k tweets" },
+  ];
+
   const [id, setId] = useState("home");
   const [dropdown, setDropdown] = useState(false);
 
@@ -93,6 +101,44 @@ function App() {
               </button>
             </div>
           )}
+        </div>
+      </div>
+
+      {/* tweets */}
+      <div className="w-1/2 h-full "></div>
+
+      {/* trending */}
+      <div className="w-1/3 h-full border-l border-lighter py-2 px-6 overflow-y-scroll relative">
+        <input
+          type="text"
+          className="pl-12 rounded-full w-full p-2 bg-lighter text-sm focus:outline-none"
+          placeholder="Search Twitter"
+        />
+        <i className="fas fa-search absolute left-0 top-0 mt-5 ml-12 text-sm text-light"></i>
+        <div className="w-full rounded-lg bg-lightest ">
+          <div className="flex items-center justify-between p-3">
+            <p className="text-lg font-bold">Trends for You</p>
+            <i className="fas fa-cog text-lg text-blue"></i>
+          </div>
+          {trending.map((trend) => (
+            <button className="w-full flex justify-between hover:bg-lighter p-3 border-t border-lighter">
+              <div>
+                <p className="text-sm text-left leading-tight text-dark">
+                  {trend.top}
+                </p>
+                <p className="font-bold text-left leading-tight">
+                  {trend.title}
+                </p>
+                <p className="text-left leading-tight text-dark">
+                  {trend.bottom}
+                </p>
+              </div>
+              <i className="fas fa-angle-down text-lg text-dark"></i>
+            </button>
+          ))}
+          <button className="w-full p-3 hover:bg-lighter text-left text-blue border-t border-lighter">
+            Show more
+          </button>
         </div>
       </div>
     </div>
