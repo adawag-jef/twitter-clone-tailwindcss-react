@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="flex container h-screen w-full">
       {/* side nav */}
-      <div className="w-1/5 border-r border-light px-8 py-2 flex flex-col justify-between">
+      <div className="lg:w-1/5 border-r border-light lg:px-6 px-2 py-2 flex flex-col justify-between">
         <div>
           <button className="h-12 w-12 rounded-full hover:bg-lightblue text-3xl text-blue">
             <i className="fab fa-twitter"></i>
@@ -35,15 +35,18 @@ function App() {
                 } flex items-center py-2 px-4 mb-3 focus:outline-none hover:bg-lightblue hover:text-blue rounded-full mr-auto`}
               >
                 <i className={`${tab.icon} text-2xl mr-4 text-left`}></i>
-                <p className="text-lg font-semibold">{tab.title}</p>
+                <p className="hidden lg:block text-lg font-semibold">
+                  {tab.title}
+                </p>
               </button>
             ))}
           </div>
-          <button className="text-white bg-blue rounded-full font-semibold focus:outline-none w-full p-3 hover:bg-darkblue">
-            Tweet
+          <button className="text-white bg-blue rounded-full font-semibold focus:outline-none w-12 h-12 lg:h-auto lg:w-full p-3 hover:bg-darkblue">
+            <p className="hidden lg:block">Tweet</p>
+            <i className="fas fa-plus lg:hidden"></i>
           </button>
         </div>
-        <div className="w-full relative">
+        <div className="lg:w-full relative">
           <button
             onClick={() => setDropdown(true)}
             className="flex items-center w-full hover:bg-lightblue rounded-full p-2 focus:outline-none"
@@ -53,11 +56,11 @@ function App() {
               alt="profile image"
               className="w-10 h-10 rounded-full border-lighter"
             />
-            <div className="ml-4">
+            <div className="hidden lg:block ml-4">
               <p className="text-sm font-bold leading-tight">Jane Doe</p>
               <p className="text-sm leading-tight">@jDoe</p>
             </div>
-            <i className="fas fa-angle-down ml-auto text-lg"></i>
+            <i className="hidden lg:block fas fa-angle-down ml-auto text-lg"></i>
           </button>
           {dropdown && (
             <div className="absolute left-0 bottom-0 w-64 rounded-lg shadow-md border-lightest bg-white mb-16">
