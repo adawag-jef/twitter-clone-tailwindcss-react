@@ -74,6 +74,22 @@ function App() {
 
   const [id, setId] = useState("home");
   const [dropdown, setDropdown] = useState(false);
+  const [tweets, setTweets] = useState([
+    {
+      content: "It is so nice outside",
+    },
+  ]);
+  const [tweet, setTweet] = useState({ content: "" });
+
+  const handleChange = (e) => {
+    setTweet({ [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setTweets([tweet, ...tweets]);
+    setTweet({ content: "" });
+  };
 
   return (
     <div className="flex h-screen w-full">
@@ -155,21 +171,24 @@ function App() {
       </div>
 
       {/* tweets */}
-      <div className="w-1/2 h-full overflow-y-scroll">
+      <div className="lg:w-1/2 w-4/5 h-full overflow-y-scroll">
         <div className="px-5 py-3 border-b border-lighter flex items-center justify-between">
           <h1 className="text-xl font-bold">Home</h1>
           <i className="far fa-star text-xl text-blue"></i>
         </div>
         <div className="px-5 py-3 border-b-8 border-lighter flex">
-          <div>
+          <div className="flex-none mr-4">
             <img
               src="./images/profile.png"
               alt="profile pic"
-              className="w-12 h-12 rounded-full border-lighter"
+              className="h-12 w-12 rounded-full flex-none"
             />
           </div>
-          <form className="w-full px-4 relative">
+          <form className="w-full px-4 relative" onSubmit={handleSubmit}>
             <textarea
+              name="content"
+              onChange={handleChange}
+              value={tweet.content}
               placeholder="What's up?"
               className="w-full mt-3 pb-3 focus:outline-none"
             ></textarea>
@@ -179,11 +198,54 @@ function App() {
               <i className="text-lg text-blue mr-4 far fa-chart-bar"></i>
               <i className="text-lg text-blue mr-4 far fa-smile"></i>
             </div>
-            <button className="absolute bottom-0 right-0 h-10 px-4 text-white font-semibold bg-blue hover:bg-darkblue rounded-full focus:outline-none">
+            <button
+              type="submit"
+              className="absolute bottom-0 right-0 h-10 px-4 text-white font-semibold bg-blue hover:bg-darkblue rounded-full focus:outline-none"
+            >
               Tweet
             </button>
           </form>
         </div>
+        {tweets.map((tweet) => (
+          <div className="flex flex-col-reverse">
+            <div className="w-full p-4 border-b hover:bg-lighter flex">
+              <div className="flex-none mr-4">
+                <img
+                  src="./images/profile.png"
+                  alt="profile pic"
+                  className="h-12 w-12 rounded-full flex-none"
+                />
+              </div>
+              <div className="w-full">
+                <div className="flex items-center w-full">
+                  <p className="font-semibold"> Jane Doe </p>
+                  <p className="text-sm text-dark ml-2"> @jDoe </p>
+                  <p className="text-sm text-dark ml-2"> 1 sec </p>
+                  <i className="fas fa-angle-down text-dark ml-auto"></i>
+                </div>
+                <p className="py-2">{tweet.content}</p>
+                <div className="flex items-center justify-between w-full">
+                  <div className="flex items-center text-sm text-dark">
+                    <i className="far fa-comment mr-3"></i>
+                    <p> 0 </p>
+                  </div>
+                  <div className="flex items-center text-sm text-dark">
+                    <i className="fas fa-retweet mr-3"></i>
+                    <p> 0 </p>
+                  </div>
+                  <div className="flex items-center text-sm text-dark">
+                    <i className="fas fa-heart mr-3"></i>
+                    <p> 1 </p>
+                  </div>
+                  <div className="flex items-center text-sm text-dark">
+                    <i className="fas fa-share-square mr-3"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+
         {following.map((follow) => (
           <div className="w-full p-4 border-b hover:bg-lighter flex">
             <div className="flex-none mr-4">
