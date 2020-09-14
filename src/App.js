@@ -29,6 +29,49 @@ function App() {
     { src: "kevin.jpg", name: "Kevin Hart", handle: "@miniRock" },
   ];
 
+  const following = [
+    {
+      src: "elon.jpg",
+      name: "Elon Musk",
+      handle: "@teslaBoy",
+      time: "20 min",
+      tweet: "Should I just quarantine on mars??",
+      comments: "1,000",
+      retweets: "550",
+      like: "1,000,003",
+    },
+    {
+      src: "kevin.jpg",
+      name: "Kevin Hart",
+      handle: "@miniRock",
+      time: "55 min",
+      tweet: "Should me and the rock do another sub-par movie together????",
+      comments: "2,030",
+      retweets: "50",
+      like: "20,003",
+    },
+    {
+      src: "elon.jpg",
+      name: "Elon Musk",
+      handle: "@teslaBoy",
+      time: "1.4 hr",
+      tweet: "Haha just made a flame thrower. Shld I sell them?",
+      comments: "100,000",
+      retweets: "1,000,002",
+      like: "5,000,003",
+    },
+    {
+      src: "elon.jpg",
+      name: "Elon Musk",
+      handle: "@teslaBoy",
+      time: "1.4 hr",
+      tweet: "Just did something crazyyyyyyy",
+      comments: "100,500",
+      retweets: "1,000,032",
+      like: "5,000,103",
+    },
+  ];
+
   const [id, setId] = useState("home");
   const [dropdown, setDropdown] = useState(false);
 
@@ -112,7 +155,73 @@ function App() {
       </div>
 
       {/* tweets */}
-      <div className="w-1/2 h-full overflow-y-scroll"></div>
+      <div className="w-1/2 h-full overflow-y-scroll">
+        <div className="px-5 py-3 border-b border-lighter flex items-center justify-between">
+          <h1 className="text-xl font-bold">Home</h1>
+          <i className="far fa-star text-xl text-blue"></i>
+        </div>
+        <div className="px-5 py-3 border-b-8 border-lighter flex">
+          <div>
+            <img
+              src="./images/profile.png"
+              alt="profile pic"
+              className="w-12 h-12 rounded-full border-lighter"
+            />
+          </div>
+          <form className="w-full px-4 relative">
+            <textarea
+              placeholder="What's up?"
+              className="w-full mt-3 pb-3 focus:outline-none"
+            ></textarea>
+            <div className="flex items-center">
+              <i className="text-lg text-blue mr-4 far fa-image"></i>
+              <i className="text-lg text-blue mr-4 fas fa-film"></i>
+              <i className="text-lg text-blue mr-4 far fa-chart-bar"></i>
+              <i className="text-lg text-blue mr-4 far fa-smile"></i>
+            </div>
+            <button className="absolute bottom-0 right-0 h-10 px-4 text-white font-semibold bg-blue hover:bg-darkblue rounded-full focus:outline-none">
+              Tweet
+            </button>
+          </form>
+        </div>
+        {following.map((follow) => (
+          <div className="w-full p-4 border-b hover:bg-lighter flex">
+            <div className="flex-none mr-4">
+              <img
+                src={`./images/${follow.src}`}
+                alt="profile pic"
+                className="w-12 h-12 rounded-full flex-none"
+              />
+            </div>
+            <div className="w-full">
+              <div className="flex items-center w-full">
+                <p className="font-semibold">{follow.name}</p>
+                <p className="text-sm text-dark ml-2">{follow.handle}</p>
+                <p className="text-sm text-dark ml-2">{follow.time}</p>
+                <i className="fas fa-angle-down text-dark ml-auto"></i>
+              </div>
+              <p className="py-2">{follow.tweet}</p>
+              <div className="flex items-center justify-between w-full">
+                <div className="flex items-center text-sm text-dark">
+                  <i className="mr-3 far fa-comment"></i>
+                  <p>{follow.comments}</p>
+                </div>
+                <div className="flex items-center text-sm text-dark">
+                  <i className="mr-3 fas fa-retweet"></i>
+                  <p>{follow.retweet}</p>
+                </div>
+                <div className="flex items-center text-sm text-dark">
+                  <i className="mr-3 far fa-heart"></i>
+                  <p>{follow.like}</p>
+                </div>
+                <div className="flex items-center text-sm text-dark">
+                  <i className="mr-3 far fa-share-square"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
 
       {/* trending */}
       <div className="hidden md:block w-1/3 h-full border-l border-lighter py-2 px-6 overflow-y-scroll relative">
